@@ -20,6 +20,7 @@
 * [🌴 Effective Java 3/E](study/effective-java-3-e/README.md)
   * [Item 19](study/effective-java-3-e/item-19.md)
   * [Item 24](study/effective-java-3-e/item-24.md)
+* [💾 O/S](study/o-s.md)
 
 ## Algorithms
 
