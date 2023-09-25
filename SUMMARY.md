@@ -22,6 +22,7 @@
   * [Item 24](study/effective-java-3-e/item-24.md)
 * [💾 O/S](study/o-s/README.md)
   * [캐시 메모리](study/o-s/undefined.md)
+  * [CPU 스케줄링](study/o-s/cpu.md)
 
 ## Algorithms
 
