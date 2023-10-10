@@ -16,6 +16,7 @@
 
 ## 📚 STUDY
 
+* [🔰 Vue.js](study/vue.js.md)
 * [🤖 Effective Kotlin](study/effective-kotlin.md)
 * [🌴 Effective Java 3/E](study/effective-java-3-e/README.md)
   * [Item 19](study/effective-java-3-e/item-19.md)
