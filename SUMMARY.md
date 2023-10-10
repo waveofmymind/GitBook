@@ -29,6 +29,7 @@
 * [LeetCode](algorithms/leetcode/README.md)
   * [739. Daily Temperatures](algorithms/leetcode/739.-daily-temperatures.md)
 * [백준](algorithms/undefined/README.md)
+  * [16236. 아기 상어](algorithms/undefined/16236..md)
   * [15686. 치킨 배달](algorithms/undefined/15686..md)
   * [3190. 뱀](algorithms/undefined/3190..md)
   * [2178. 미로 탐색](algorithms/undefined/2178..md)
