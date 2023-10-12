@@ -1,17 +1,11 @@
-# 👋 안녕하세요 :)
+# 👋 백엔드 개발자, 전상준입니다
 
-<details>
+저는 사용자가 내일 또 사용하고 싶은, 좋은 서비스를 제공하는 것에 개인적인 열망과 궁극적인 목표를 가지고 있습니다.
 
-<summary>How to use it?</summary>
+그리고 좋은 서비스는, 완벽한 프로덕트보다 되는 프로덕트를 기반으로 사용자로부터의 피드백을 통해 더 좋은 서비스로 만들 수 있다고 믿습니다.
 
-This space is designed to be read linearly, so start with our Vision, Mission & Focus and work down from there! We recommend reading everything through in one sitting and then revisiting and re-reading if you need to.
+그래서 저는 짧은 주기를 통해 결과물을 만들어 낼 수 있는 애자일 스크럼 적용한 경험이 있습니다.
 
-</details>
+좋은 팀원이 되기 위해, 기술적 겸손함을 가지는 것을 중요하게 생각합니다.
 
-<details>
-
-<summary>Contributing</summary>
-
-If you want to contribute changes, start a new change request and submit it for review. The People team will review it soon after.
-
-</details>
+이를 통해 타인의 의견을 적극적으로 수용하고 제 의견을 객관화하여 ''틀렸다'' 보다 ''다르다''를 명확하게 제시하는 개발자가 되고자 몰입하고 있습니다.
