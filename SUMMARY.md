@@ -28,6 +28,7 @@
 ## Algorithms
 
 * [LeetCode](algorithms/leetcode/README.md)
+  * [42. Trapping Rain Water](algorithms/leetcode/42.-trapping-rain-water.md)
   * [739. Daily Temperatures](algorithms/leetcode/739.-daily-temperatures.md)
 * [백준](algorithms/undefined/README.md)
   * [13305. 주유소](algorithms/undefined/13305..md)
