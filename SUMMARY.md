@@ -31,6 +31,7 @@
   * [42. Trapping Rain Water](algorithms/leetcode/42.-trapping-rain-water.md)
   * [739. Daily Temperatures](algorithms/leetcode/739.-daily-temperatures.md)
 * [백준](algorithms/undefined/README.md)
+  * [7576. 토마토](algorithms/undefined/7576..md)
   * [1753. 최단 경로](algorithms/undefined/1753..md)
   * [4796. 캠핑](algorithms/undefined/4796..md)
   * [13305. 주유소](algorithms/undefined/13305..md)
