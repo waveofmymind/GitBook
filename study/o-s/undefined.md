@@ -4,7 +4,7 @@ description: CPU도 당신처럼 예측하고 미리 움직인다.
 
 # 캐시 메모리
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>Memory Hierarchy</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption><p>Memory Hierarchy</p></figcaption></figure>
 
 CPU는 연산장치이기때문에 속도가 증가할수록 연산의 양이 증가하므로, 성능이 높아진다고 한다.
 
