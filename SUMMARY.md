@@ -16,7 +16,8 @@
 
 ## 📚 STUDY
 
-* [🌱 Toby's Spring Boot](study/tobys-spring-boot.md)
+* [🌱 Toby's Spring Boot](study/tobys-spring-boot/README.md)
+  * [Front Controller](study/tobys-spring-boot/front-controller.md)
 * [🔰 Vue.js](study/vue.js.md)
 * [🤖 Effective Kotlin](study/effective-kotlin.md)
 * [🌴 Effective Java 3/E](study/effective-java-3-e/README.md)
