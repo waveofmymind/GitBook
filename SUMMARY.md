@@ -35,6 +35,7 @@
   * [42. Trapping Rain Water](algorithms/leetcode/42.-trapping-rain-water.md)
   * [739. Daily Temperatures](algorithms/leetcode/739.-daily-temperatures.md)
 * [백준](algorithms/undefined/README.md)
+  * [11000. 강의실 배정](algorithms/undefined/11000..md)
   * [1931. 회의실 배정](algorithms/undefined/1931..md)
   * [11399. ATM](algorithms/undefined/11399.-atm.md)
   * [2217. 로프](algorithms/undefined/2217..md)
