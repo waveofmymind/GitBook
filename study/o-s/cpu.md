@@ -1,6 +1,6 @@
 # CPU 스케줄링
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 프로세스를 줄세워 운영체제가 CPU의 전산자원을 선점할 수 있도록 하는 것
 

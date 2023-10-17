@@ -38,7 +38,7 @@ Spring != Spring Boot
 
 ## Containerless
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 웹 애플리케이션 서버는 웹 서버로부터의 요청을 동적으로 처리하기 위해서 다양한 Web Component가 존재하며,
 
@@ -56,7 +56,7 @@ Servlet Container 뒤쪽에 있는 것이 Spring Container이다.
 
 이러한 문제를 해결하기 위해 standalone으로 실행할 수 있는 것이 `Spring Boot`이다.
 
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 단지 메인 메서드를 실행하는 것으로 스프링과 서블릿 컨테이너를 실행할 수 있는 간편함을 제공하는 것.
 
