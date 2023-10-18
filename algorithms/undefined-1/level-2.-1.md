@@ -1,47 +1,68 @@
-# Level 2. 주식가격
+# Level 2. 기능개발
 
-{% embed url="https://school.programmers.co.kr/learn/courses/30/lessons/42584?language=python3" %}
+{% embed url="https://school.programmers.co.kr/learn/courses/30/lessons/42586" %}
 
 ## 접근
 
-괄호 체크하는 문제처럼 스택을 이용하는 전형적인 대표 문제인 것 같다.
+현재 작업이 100%가 되었더라도, 이전 작업이 아직 100%가 아닐 경우 이전 작업이 완료될 때 같이 배포되는 것을 명심해야한다.
 
-리트코드에서 봤던 날씨가 떨어지지 않는 날을 구하는 [문제](https://leetcode.com/problems/daily-temperatures/description/)와 유사하다.
-
-for문으로 prices를 순회하면서 현재 price를 스택에 값과 비교한다.
+요즘 많이 사용하던 것인, 특정 조건을 만족했을 때까지 pop하는 반복문을 활용해야할 것 같다.
 
 ## 풀이
 
-```
-def solution(prices):
-    stack = []
-    answer = [0] * len(prices)
-    for idx, price in enumerate(prices):
-        if not stack:
-            stack.append((idx, price))
-        else:
-            while stack and stack[-1][1] > price:
-                day,p = stack.pop()
-                answer[day] = idx-day
-            stack.append((idx,price))
-    while stack:
-        day, price = stack.pop()
-        answer[d] = len(prices) - day - 1
+```python
+from collections import deque
+def solution(progresses, speeds):
+    
+    progresses = deque(progresses)
+    speeds = deque(speeds)
+    answer = []
+    
+    while progresses:
+        cnt = 0
+        for i in range(len(progresses)):
+            progresses[i] += speeds[i]
+            
+        while progresses and progresses[0] >= 100:
+            cnt += 1
+            progresses.popleft()
+            speeds.popleft()
+            
+        if cnt:
+            answer.append(cnt)
     return answer
+            
+                
+        
+        
+            
 ```
 
-흐름대로 문제를 해석해보면,
+우선 progresses와 speeds를 모두 큐로 만들어준다.
 
-스택이 비었을 경우 일수 체크를 해야하기 때문에 인덱스, 값을 튜플로 스택에 넣는다.
+이유는 이전 작업을 먼저 판단해야하기 때문에 항상 0번째 인덱스부터 확인해야하기 때문이다. pop(0)은 O(N), popleft()는 O(1)의 시간복잡도를 갖는다.
 
-이때 인덱스를 넣는 이유는, **얼마나 떨어지지 않았는지와 answer에 값을 넣을 때 인덱스 위치로 넣어야한다.**
+progresses에 원소가 존재할 때까지 반복문을 돌고,
 
-스택에 값이 있을 경우 while문 조건을 체크하는데, 스택에 값이 있을 때와 스택의 top이 현재 price보다 크면, 값이 떨어진 것이므로 스택에서 제거해야한다.
+cnt는 그 날 배포할 수 있는 기능 갯수이다.
 
-while문을 탈출하면 남아있는 스택의 값들은 모두 현재 price보다 작아서 값이 아직 떨어지지 않은 것들이다.
+그 날 할당치를 추가하기 위해 for문을 수행하며 progresses\[i]에 speeds\[i]를 더해준다.
 
-그리고 현재 idx,price도 일수 체크를 해야하므로 stack에 넣어준다.
 
-prices에 대한 반복문을 탈출하고, 스택에 남은 값들은 한번도 값이 떨어지지 않은 가격들이다.
 
-그러므로 스택이 빌 때 까지 answer에 값을 추가해준다.
+그 다음이 핵심인데, 만약 progresses에 원소가 존재하고 가장 이전 작업이 배포가 가능할 때까지, 새로운 반복문을 수행한다.
+
+만약에 1번 TC처럼 첫번째가 7일, 두번째가 3일 소요되면 두번째 기능이 100이 되더라도 progresses\[0]을 기준으로 반복문에 진입하기 때문에 첫번째 기능(이전 기능)이 100이 되지 않으면 cnt를 증가할 수 없다.
+
+만약 가장 이전 기능이 100이 되면 그때 배포할 수 있는 progresses가 있는지 확인하기 위해 반복문을 돌면서 cnt를 증가한다.
+
+
+
+배포할 수 있는 기능을 모두 추려내면 cnt는 최소 1 이상이므로&#x20;
+
+배포할 수 있는 것이 있으면(if cnt) 정답 배열에 추가한다.
+
+
+
+
+
