@@ -1,48 +1,49 @@
-# Level 3. 야근 지수
+---
+description: DFS
+---
 
-{% embed url="https://school.programmers.co.kr/learn/courses/30/lessons/12927" %}
+# Level 3. 네트워크
+
+{% embed url="https://school.programmers.co.kr/learn/courses/30/lessons/43162" %}
 
 ## 접근
 
-주어진 배열에서 값을 n만큼만 줄일 수 있다.
+네트워크 망임을 판단할 때, 탐색하지 않은 노드부터 최대한 끝까지 탐색해야한다.
 
-피로 지수는 배열에서 n만큼 줄이고 난 뒤 각 원소의 제곱의 합이다.
+그렇기 때문에 BFS보다 DFS로 해결하는 것이 적절한 것 같다.
 
 ## 풀이
 
 ```python
-import heapq
-
-def solution(n, works):
-    hq = []
-    for w in works:
-        heapq.heappush(hq, -w)
-    while hq and n != 0:
-        target = heapq.heappop(hq)
-        target = -target
-        if target - 1 != 0:
-            heapq.heappush(hq, -(target - 1))
-        n -= 1
-    answer = 0
-    for h in hq:
-        answer += h ** 2
-    return answer
+def solution(n, computers):
+    graph = [[] for _ in range(n)]
+    cnt = 0
+    for i in range(n):
+        for j in range(n):
+            if i != j and computers[i][j] == 1:
+                graph[i].append(j)
+                
+    visited = [False] * n
+    
+    def dfs(start):
+        for next in graph[start]:
+            nonlocal visited
+            if not visited[next]:
+                visited[next] = True
+                dfs(next)
+                
+    for x in range(n):
+        if not visited[x]:
+            visited[x] = True
+            dfs(x)
+            cnt += 1
+    return cnt
 ```
 
-첫번째 테스트 케이스를 예로 들면&#x20;
+노드의 개수만큼 graph 배열을 List로 초기화한다.
 
-n=4일때, \[4,3,3]이다.
+graph\[i]는 i가 갈 수 있는 노드이다. 즉 간선이 연결된 것을 의미한다.
 
-가장 직관적으로 첫번째 원소를 0으로 만들면, 피로 지수는 9 + 9 = 18이 나온다.
+이중포문으로 computers 배열을 탐색하면서, i != j 이고 computers\[i]\[j] == 1인 경우에는 서로 다른 노드가 간선이 연결되어 있다는 것이므로 graph 배열에 추가한다.
 
-그러나 만약, 골고루 값을 줄인다면 \[3,1,2]로 해서 9 + 1 + 4 = 14
-
-마지막으로 \[2,2,2], 4 + 4 + 4 = 12이다.
-
-즉 한쪽 원소만을 줄이는 것이 아닌 최대한 모든 수를 고르게 만들어야한다.
-
-그래서 힙을 사용해서 매번 리스트에서 가장 큰 원소를 빼서 1만큼 줄이고, 0보다 클 경우 다시 힙에 넣는다.
-
-파이썬의 heapq 라이브러리는 최소 힙이기 때문에 `heapq.heappop()`를 할 경우 매번 가장 작은 원소가 팝된다.
-
-그렇기 때문에 최대 힙을 구현하려면 원소를 음수로 변환해서 넣고, 팝을 할 때 음수로 변환해서 값을 가져오면 최대값을 뽑을 수 있다.
+각 노드는 하나의 네트워크에만 속할 수 있기 때문에 한번 탐색했던 노드는 패스하기 위해 visited로 방문 체크를 한다.
