@@ -61,3 +61,4 @@
   * [Level 2. 기능개발](algorithms/undefined-1/level-2.-2.md)
   * [Level 3. 야근 지수](algorithms/undefined-1/level-3.-1.md)
   * [Level 2. 주식가격](algorithms/undefined-1/level-2.-3.md)
+  * [Level 2. 구명 보트](algorithms/undefined-1/level-2.-4.md)
