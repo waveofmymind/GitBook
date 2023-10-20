@@ -1,49 +1,42 @@
----
-description: DFS
----
+# Level 3. 입국 심사
 
-# Level 3. 네트워크
-
-{% embed url="https://school.programmers.co.kr/learn/courses/30/lessons/43162" %}
+{% embed url="https://school.programmers.co.kr/learn/courses/30/lessons/43238" %}
 
 ## 접근
 
-네트워크 망임을 판단할 때, 탐색하지 않은 노드부터 최대한 끝까지 탐색해야한다.
-
-그렇기 때문에 BFS보다 DFS로 해결하는 것이 적절한 것 같다.
+이분 탐색에서 가장 중요한 것은 lt와 rt를 어떻게 잡을 지와 mid가 정답 조건에 맞는지를 체크하는 것이다.
 
 ## 풀이
 
 ```python
-def solution(n, computers):
-    graph = [[] for _ in range(n)]
-    cnt = 0
-    for i in range(n):
-        for j in range(n):
-            if i != j and computers[i][j] == 1:
-                graph[i].append(j)
-                
-    visited = [False] * n
-    
-    def dfs(start):
-        for next in graph[start]:
-            nonlocal visited
-            if not visited[next]:
-                visited[next] = True
-                dfs(next)
-                
-    for x in range(n):
-        if not visited[x]:
-            visited[x] = True
-            dfs(x)
-            cnt += 1
-    return cnt
+def solution(n, times):
+    lt = 1
+    rt = max(times) * n
+    answer = 0
+    while lt <= rt:
+        mid = (lt + rt) // 2
+        
+        people = 0
+        
+        for time in times:
+            people += mid // time
+            
+            if people >= n:
+                break
+        if people >= n:
+            rt = mid - 1
+            answer = mid
+        else:
+            lt = mid + 1
+    return answer
 ```
 
-노드의 개수만큼 graph 배열을 List로 초기화한다.
+최솟값과 최댓값을 모든 사람이 상담 받는 시간으로 삼는다.
 
-graph\[i]는 i가 갈 수 있는 노드이다. 즉 간선이 연결된 것을 의미한다.
+즉, lt는 1, rt는 모든 사람이 가장 오래 걸리는 상담 시간으로 한다.
 
-이중포문으로 computers 배열을 탐색하면서, i != j 이고 computers\[i]\[j] == 1인 경우에는 서로 다른 노드가 간선이 연결되어 있다는 것이므로 graph 배열에 추가한다.
+그리고 for time in times부터 설명하면,
 
-각 노드는 하나의 네트워크에만 속할 수 있기 때문에 한번 탐색했던 노드는 패스하기 위해 visited로 방문 체크를 한다.
+mid // time은 각 상담원들이 mid동안 상담할 수 있는 인원이다.
+
+만약 people이 n보다 크거나 같은 경우 탈출한다.
