@@ -10,10 +10,11 @@
   * [Focus](about-us/vision-mission-and-focus/focus.md)
 * [💖 Values](about-us/values.md)
 
-## Team
+## 🥴 Interview
 
-* [☕ Java](team/java/README.md)
-  * [GC](team/java/gc.md)
+* [☕ Java](interview/java/README.md)
+  * [equals()와 hashcode()](interview/java/equals-hashcode.md)
+  * [GC](interview/java/gc.md)
 
 ## 📚 STUDY
 

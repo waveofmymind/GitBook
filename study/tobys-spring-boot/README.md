@@ -38,7 +38,7 @@ Spring != Spring Boot
 
 ## Containerless
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 웹 애플리케이션 서버는 웹 서버로부터의 요청을 동적으로 처리하기 위해서 다양한 Web Component가 존재하며,
 
