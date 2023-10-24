@@ -12,7 +12,8 @@
 
 ## Team
 
-* [👋 Meet the Team!](team/meet-the-team.md)
+* [☕ Java](team/java/README.md)
+  * [GC](team/java/gc.md)
 
 ## 📚 STUDY
 
