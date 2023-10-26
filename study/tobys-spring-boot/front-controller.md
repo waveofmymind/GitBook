@@ -1,6 +1,6 @@
 # Front Controller
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 `Servlet`은 요청 path별로 생성해야한다는 번거로움이 있었고, 각 Servlet이 요청을 처리할 때 사용되는 코드가 대부분 중복이였다.
 

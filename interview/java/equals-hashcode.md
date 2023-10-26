@@ -88,7 +88,7 @@ System.out.println(personB.hashCode()); // 14235...
 
 hashcode()를 사용하는 컬렉션에서 객체의 같음을 판단하는 기준이 다음과 같기 때문이다.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 즉, hashCode()의 반환 값이 다르기 때문에 다른 객체로 판단해버리는 것이다.
 

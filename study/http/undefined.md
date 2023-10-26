@@ -1,6 +1,6 @@
 # 인터넷 네트워크
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 위처럼, 내가 쓴 코드를 서버로 전달하기 위해서는 클라이언트와 서버의 IP 주소를 사용한다.
 
