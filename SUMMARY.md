@@ -47,6 +47,7 @@
 ## Algorithms
 
 * [LeetCode](algorithms/leetcode/README.md)
+  * [17. Letter Combinations of a Phone Number](algorithms/leetcode/17.-letter-combinations-of-a-phone-number.md)
   * [200. Number of Islands](algorithms/leetcode/200.-number-of-islands.md)
   * [42. Trapping Rain Water](algorithms/leetcode/42.-trapping-rain-water.md)
   * [739. Daily Temperatures](algorithms/leetcode/739.-daily-temperatures.md)
