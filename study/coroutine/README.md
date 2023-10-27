@@ -25,7 +25,7 @@ fun newRoutine() {
 
 즉, 아래와 같다.
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption><p>일반적ㅣ ㅇㅇㅇ</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption><p>일반적ㅣ ㅇㅇㅇ</p></figcaption></figure>
 
 newRoutine()이 실행되면 스택에 num1,num2 지역 변수를 할당하고, 루틴이 끝나면 GC에 의해 미래에는 삭제될 것이다.
 
@@ -63,7 +63,7 @@ suspend fun newRoutine() {
 
 즉 커스텀한 CoroutineScope를 생성하고, 안에서 launch로 새로운 코루틴을 만든다.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 중단되었다가 재개하더라도 다시 수행할 수 있어야하기때문에 정보를 보관해야한다.
 
@@ -75,6 +75,6 @@ suspend fun newRoutine() {
 
 ## 정리
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 코루틴의 경우 코루틴이 중지되더라도 추후 메모리 접근이 가능해야한다.
