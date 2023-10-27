@@ -75,6 +75,6 @@ suspend fun newRoutine() {
 
 ## 정리
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 코루틴의 경우 코루틴이 중지되더라도 추후 메모리 접근이 가능해야한다.
