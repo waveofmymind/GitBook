@@ -26,6 +26,7 @@
   * [코루틴의 예외 처리 및 Job의 상태 변화](study/coroutine/job-1.md)
   * [Structured Concurrency](study/coroutine/structured-concurrency.md)
   * [CoroutineScope와 CoroutineContext](study/coroutine/coroutinescope-coroutinecontext.md)
+  * [코루틴과 Continuation](study/coroutine/continuation.md)
 * [🖨 모든 개발자를 위한 HTTP 웹 기본 지식](study/http/README.md)
   * [인터넷 네트워크](study/http/undefined.md)
 * [📓 DB](study/db/README.md)
