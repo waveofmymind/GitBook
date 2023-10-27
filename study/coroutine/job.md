@@ -77,7 +77,7 @@ fun main(): Unit = runBlocking {
 
 &#x20;
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### join()
 
@@ -101,7 +101,7 @@ fun main(): Unit = runBlocking {
 
 &#x20;
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### launch 정리
 
