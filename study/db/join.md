@@ -64,7 +64,7 @@ MySQL의 경우 FULL OUTER JOIN을 지원하지 않기 때문에 LEFT OUTER JOIN
 
 이때 UNION의 경우 중복된 값을 제거하기 때문에 중복된 값도 포함하고 싶을 경우 UNION ALL을 사용한다.
 
-## sR
+## 드라이빙 테이블의 차이
 
 LEFT OUTER, RIGHT OUTER 조인 둘 다 단지 기준 테이블이 왼쪽, 오른쪽 차이만 있기 때문에 연산적으로는 동일하다.
 
