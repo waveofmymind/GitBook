@@ -1,42 +1,45 @@
-# Level 3. 입국 심사
+---
+description: 해시
+---
 
-{% embed url="https://school.programmers.co.kr/learn/courses/30/lessons/43238" %}
+# Level 3. 베스트앨범
+
+{% embed url="https://school.programmers.co.kr/learn/courses/30/lessons/42579" %}
 
 ## 접근
 
-이분 탐색에서 가장 중요한 것은 lt와 rt를 어떻게 잡을 지와 mid가 정답 조건에 맞는지를 체크하는 것이다.
+노래를 넣는 기준은 1. 장르별 음악의 총 재생 횟수, 2. 각 음악당 재생 횟수 3. 숫자가 낮은 순서이다.
 
 ## 풀이
 
 ```python
-def solution(n, times):
-    lt = 1
-    rt = max(times) * n
-    answer = 0
-    while lt <= rt:
-        mid = (lt + rt) // 2
+from collections import defaultdict
+
+def solution(genres, plays):
+    answer = []
+    genre_count = defaultdict(int)
+    arr = [(i,v,plays[i]) for i,v in enumerate(genres)]
+    for i in range(len(genres)):
+        genre_count[genres[i]] += plays[i]
         
-        people = 0
-        
-        for time in times:
-            people += mid // time
-            
-            if people >= n:
-                break
-        if people >= n:
-            rt = mid - 1
-            answer = mid
+    arr.sort(reverse=True, key = lambda x : (genre_count[x[1]], x[2], -x[0]))
+    insert = defaultdict(int)
+    for a in arr:
+        if insert[a[1]] == 2:
+            continue
         else:
-            lt = mid + 1
+            answer.append(a[0])
+            insert[a[1]] += 1
     return answer
+            
 ```
 
-최솟값과 최댓값을 모든 사람이 상담 받는 시간으로 삼는다.
+genre\_count 딕셔너리에 장르별 음악 재생 횟수의 합을 구한다.
 
-즉, lt는 1, rt는 모든 사람이 가장 오래 걸리는 상담 시간으로 한다.
+그리고 arr배열은 원소가 (음악의 고유번호, 장르, 재생 횟수)로 구성되어있기 때문에 아까 정의한 순서대로 정렬을 해준다.
 
-그리고 for time in times부터 설명하면,
+이때 고유 번호는 작은 것이 우선시되어야하기 때문에 -를 이용해서 혼자서만 오름차순 정렬을 해주었다.
 
-mid // time은 각 상담원들이 mid동안 상담할 수 있는 인원이다.
+그리고 insert 딕셔너리는 각 key가 장르로, 몇번 들어가있는지 체크하기 위해 만들었다.
 
-만약 people이 n보다 크거나 같은 경우 탈출한다.
+만약 insert\[key] 가 2이면 continue한다.
