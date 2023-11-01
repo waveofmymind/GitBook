@@ -9,7 +9,7 @@ fun main() {
     runBlocking {
       printWithThread("START")
       launch {
-        delay{2_000L) // yield()
+        delay(2_000L) // yield()
         printWithThread("LAUNCH END")
       }
       // 딜레이되더라도 아래 "END" 출력 코드로 쓰레드가 넘어오지 않는다.

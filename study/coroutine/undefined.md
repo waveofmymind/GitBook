@@ -17,8 +17,7 @@ fun main(): Unit = runBlocking {
         delay(1_000L)
         printWithThread("Job 2")
     }
-    
-      delay(100)
+      delay(1_00L)
       job1.cancel()  
 }
 [main @coroutine#3] Job 2

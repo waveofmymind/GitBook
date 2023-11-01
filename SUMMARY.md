@@ -26,6 +26,7 @@
   * [Chapter 1. Introduction](study/java-se-specifications/chapter-1.-introduction.md)
   * [Chapter 3. Lexical Structure](study/java-se-specifications/chapter-3.-lexical-structure.md)
 * [🤝 Coroutine](study/coroutine/README.md)
+  * [Flow란?](study/coroutine/flow.md)
   * [코루틴 빌더와 Job](study/coroutine/job.md)
   * [코루틴의 취소](study/coroutine/undefined.md)
   * [코루틴의 예외 처리 및 Job의 상태 변화](study/coroutine/job-1.md)
