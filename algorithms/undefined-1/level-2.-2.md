@@ -1,43 +1,54 @@
 ---
-description: DFS
+description: 그리디
 ---
 
-# Level 2. 타겟 넘버
+# Level 2. 호텔 대실
 
-{% embed url="https://school.programmers.co.kr/learn/courses/30/lessons/43165" %}
+{% embed url="https://school.programmers.co.kr/learn/courses/30/lessons/155651" %}
 
 ## 접근
 
-numbers의 원소들을 모두 사용해서 target을 만들 수 있는 경우의 수를 찾는다.
+그리디 문제로, 예전에 해결했던 백준의 [강의실 배정](https://waveofmymind.gitbook.io/waveofmymind/algorithms/undefined/11000.) 문제와 동일하다.
 
-핵심은, numbers의 원소들을 사용할 때, 빼거나 더하기만 가능하다.
+대신 주어진 시간을 비교하기 편하도록 별도로 계산할 필요가 있을 것 같다.
 
 ## 풀이
 
 ```python
-def solution(numbers, target):
-    answer = 0
-    def dfs(depth,total):
-        if depth == len(numbers):
-            if target == total:
-                nonlocal answer
-                answer += 1
-            return
-        dfs(depth + 1, total + numbers[depth])
-        dfs(depth + 1, total - numbers[depth])  
-    dfs(0,0)
-    return answer
+import heapq
+
+def solution(book_time):
+    arr = []
+    for bt in book_time:
+        m,s = map(int,bt[0].split(":"))
+        mm,ss = map(int,bt[1].split(":"))
+        arr.append((m * 60 + s, mm * 60 + ss))
+    arr.sort()
+    hq = []
+    
+    hq = [0]
+    for start, end in arr:
+        can_use = heapq.heappop(hq)
+        
+        if can_use + 10 <= start:
+            heapq.heappush(hq,end)
+        else:
+            heapq.heappush(hq,can_use)
+            heapq.heappush(hq,end)
+    return len(hq)
 ```
 
-dfs() 함수를 정의해서 해결했다.
+24시간제로 시간이 주어지기 때문에, 나는 정렬하기 편하도록 모든 시간을 분으로 나타내었다.
 
-인자로는 numbers의 인덱스로 사용할 depth와 합을 나타내는 total이 있다.
+이제 보니, 그냥 문자열 자체에서 정수화 하더라도 비교할 수 있을 것이다.
 
-만약 depth가 numbers의 길이와 같아지면 target과 total을 비교하는데, numbers의 길이와 같아질 경우 numbers 배열의 끝까지 도달했다는 것이기 때문이다.
+그리고 시작시간으로 스케줄을 정렬해준다.
 
-만약 아직 더 나아갈 수 있을 경우(depth < len(numbers) 재귀적으로 함수를 호출한다.
+그리고 우선 순위 큐로 사용할 hq 배열은 초기 객실은 최소 하나이므로 \[0]으로 초기화한다.
 
-이때 핵심은 depth는 무조건 +1을 해주어야하고, total에 numbers\[depth]를 더하거나, 빼거나로 무조건 처리해야한다는 점이다.
+그리고 우선 순위 큐에는 현재 예약이 끝나는 시간을 넣어놓을 것이기 때문에, 매번 can\_use 변수와 현재 start 시간과 비교해서 start가 크거나 같을 경우 현재 객실에 이어서 예약이 가능하다.
 
-만약 dfs(depth + 1, total)의 경우, 해당 depth의 numbers 원소를 사용하지 않겠다는 의미이기 때문이다.
+그러나 주의할 점은, 청소시간이 10분 소요되기 때문에 can\_use + 10과 비교해주어야한다.
+
+만약 사용 불가능하면, 새로운 객실에 배치해야하는데, 이때 can\_use는 사용하지 않았기 때문에 다시 힙큐에 넣고, 새로운 객실은 end에 끝나기 때문에 end 값도 힙큐에 넣어준다.
 
