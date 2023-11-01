@@ -1,45 +1,47 @@
-# Level 2. 구명 보트
+# Level 2. 주식가격
 
-{% embed url="https://school.programmers.co.kr/learn/courses/30/lessons/42885" %}
+{% embed url="https://school.programmers.co.kr/learn/courses/30/lessons/42584?language=python3" %}
 
 ## 접근
 
-보트 하나에 최대한 사람을 많이 태워야 모든 사람을 태울 보트의 수를 최소화할 수 있다.
+괄호 체크하는 문제처럼 스택을 이용하는 전형적인 대표 문제인 것 같다.
 
-무게순으로 정렬해서 접근할 수 있을 것 같다.
+리트코드에서 봤던 날씨가 떨어지지 않는 날을 구하는 [문제](https://leetcode.com/problems/daily-temperatures/description/)와 유사하다.
+
+for문으로 prices를 순회하면서 현재 price를 스택에 값과 비교한다.
 
 ## 풀이
 
-```python
-from collections import deque
-
-def solution(people, limit):
-    people.sort(reverse=True)
-    q = deque(people)
-    cnt = 0
-    while len(q) > 1:
-        now = q.popleft()
-        
-        if now + q[-1] <= limit:
-            q.pop()
-        cnt += 1
-    if q:
-        cnt += 1
-    return cnt
+```
+def solution(prices):
+    stack = []
+    answer = [0] * len(prices)
+    for idx, price in enumerate(prices):
+        if not stack:
+            stack.append((idx, price))
+        else:
+            while stack and stack[-1][1] > price:
+                day,p = stack.pop()
+                answer[day] = idx-day
+            stack.append((idx,price))
+    while stack:
+        day, price = stack.pop()
+        answer[d] = len(prices) - day - 1
+    return answer
 ```
 
-우선 people 배열을 내림차순 정렬해주고, deque(people)로 q를 초기화한다.
+흐름대로 문제를 해석해보면,
 
-그리고 q의 길이가 2 이상일 때까지 계속 반복문을 수행한다.
+스택이 비었을 경우 일수 체크를 해야하기 때문에 인덱스, 값을 튜플로 스택에 넣는다.
 
-우선 가장 무거운 사람을 큐에서 빼준다.
+이때 인덱스를 넣는 이유는, **얼마나 떨어지지 않았는지와 answer에 값을 넣을 때 인덱스 위치로 넣어야한다.**
 
-그리고 보트에 추가로 태울 사람이 있는지 확인해야하는데, 보트는 최대 2명까지만 탈 수 있는 것을 생각하자.
+스택에 값이 있을 경우 while문 조건을 체크하는데, 스택에 값이 있을 때와 스택의 top이 현재 price보다 크면, 값이 떨어진 것이므로 스택에서 제거해야한다.
 
-가장 무거운 사람이 가장 가벼운 사람과 몸무게를 더해서 limit를 넘을 경우 그 가장 무거운 사람은 혼자밖에 탈 수 없다.
+while문을 탈출하면 남아있는 스택의 값들은 모두 현재 price보다 작아서 값이 아직 떨어지지 않은 것들이다.
 
-가장 가벼운 사람보다 더 가벼운 사람은 없기 때문이다.
+그리고 현재 idx,price도 일수 체크를 해야하므로 stack에 넣어준다.
 
-그래서 now + q\[-1] <= limit인 경우 q\[-1]는 가장 가벼운 사람이고, 이 사람도 같이 태우기 위해서 pop()을 해준다.
+prices에 대한 반복문을 탈출하고, 스택에 남은 값들은 한번도 값이 떨어지지 않은 가격들이다.
 
-그리고 반복문을 빠져나왔을 때에는 큐에 1이거나, 0일 때이므로, 큐가 1인 경우 마지막 한사람을 태워야하기 때문에 cnt를 1 더해서 반환한다.
+그러므로 스택이 빌 때 까지 answer에 값을 추가해준다.
