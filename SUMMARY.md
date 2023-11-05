@@ -60,6 +60,7 @@
   * [42. Trapping Rain Water](algorithms/leetcode/42.-trapping-rain-water.md)
   * [739. Daily Temperatures](algorithms/leetcode/739.-daily-temperatures.md)
 * [백준](algorithms/undefined-1/README.md)
+  * [9251. LCS](algorithms/undefined-1/9251.-lcs.md)
   * [11728. 배열 합치기](algorithms/undefined-1/11728..md)
   * [13164. 행복 유치원](algorithms/undefined-1/13164..md)
   * [13904. 과제](algorithms/undefined-1/13904..md)
