@@ -88,6 +88,7 @@
   * [2178. 미로 탐색](algorithms/undefined-1/2178..md)
 * [프로그래머스](algorithms/undefined-2/README.md)
   * [Level 1 모음](algorithms/undefined-2/level-1/README.md)
+    * [x만큼 간격이 있는 n개의 숫자](algorithms/undefined-2/level-1/x-n.md)
     * [나머지가 1이 되는 수 찾기](algorithms/undefined-2/level-1/1.md)
   * [Level 3. 베스트앨범](algorithms/undefined-2/level-3..md)
   * [Level 2. 의상](algorithms/undefined-2/level-2..md)
