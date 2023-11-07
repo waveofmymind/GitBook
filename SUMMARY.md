@@ -65,6 +65,7 @@
   * [42. Trapping Rain Water](algorithms/leetcode/42.-trapping-rain-water.md)
   * [739. Daily Temperatures](algorithms/leetcode/739.-daily-temperatures.md)
 * [백준](algorithms/undefined-1/README.md)
+  * [14426. 접두사 찾기](algorithms/undefined-1/14426..md)
   * [9046. 복호화 with Kotlin](algorithms/undefined-1/9046.-with-kotlin.md)
   * [9251. LCS](algorithms/undefined-1/9251.-lcs.md)
   * [5582](algorithms/undefined-1/5582.md)
