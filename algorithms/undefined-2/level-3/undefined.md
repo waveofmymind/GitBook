@@ -1,66 +1,139 @@
-# 이중 우선 순위 큐
+# 베스트 앨범
 
-{% embed url="https://school.programmers.co.kr/learn/courses/30/lessons/42628" %}
+{% embed url="https://school.programmers.co.kr/learn/courses/30/lessons/42579" %}
 
 ## 접근
 
-최대 큐와 최소 큐를 만들어서 넣을 때에는 둘 다 넣고, 뺄 때만 주의하면 된다.
+정렬 조건을 잘 기억하자.
+
+장르 재생횟수 순 (내림차)
+
+트랙 별 재생횟수 순(내림차)
+
+인덱스 (오름차)
+
+그리고 장르 별 조건에 맞는 것 2개까지만 묶어서이다.
 
 ## 풀이
 
 ```kotlin
-import java.util.*
-
 class Solution {
-    
-    fun solution(operations: Array<String>): IntArray {
-        val maxQ = PriorityQueue<Int>(Collections.reverseOrder())
-        val minQ = PriorityQueue<Int>()
-        operations.forEach {
-            operation ->
-            
-            val (com, num) = operation.split(" ")
-            
-            when(com) {
-                "I" -> {
-                    maxQ.offer(num.toInt())
-                    minQ.offer(num.toInt())
+    data class Music(val id: Int, val play:Int, val gen: String) 
+    fun solution(genres: Array<String>, plays: IntArray): IntArray {
+        val maps = mutableMapOf<String,Int>()
+        
+        genres.forEachIndexed {
+            index,gen -> 
+            maps[gen] = maps.getOrDefault(gen, 0) + plays[index]
+        }
+        
+        var arr = genres.mapIndexed {
+            index,gen -> Music(index,plays[index]!!,gen)
+        }
+        
+        val answer = arr.sortedWith(Comparator {
+            m1,m2 -> 
+            if (m1.gen == m2.gen) {
+                if (m1.play == m2.play) {
+                    m1.id - m2.id
+                } else {
+                    m2.play - m1.play
                 }
-                "D" -> {
-                    when(num) {
-                        "-1" -> {
-                            minQ.poll()?.let { maxQ.remove(it) }
-                        }
-                        "1" -> {
-                            maxQ.poll()?.let{ minQ.remove(it) }
-                        }
-                    }
-                }
+            } else {
+                maps[m2.gen]!! - maps[m1.gen]!!
             }
-        }
-        if(maxQ.isNotEmpty()) {
-            val max = maxQ.peek()
-            val min = minQ.peek()
-            return intArrayOf(max,min)
-        }
-        return intArrayOf(0,0)
+        })
+        
+        return answer.groupBy {it.gen}.map {
+            it.value.take(2)
+        }.flatten().map { it.id }.toIntArray()
     }
 }
 ```
 
-우선순위큐의 디폴트는 최소 힙이기 때문에, 최대 힙을 만들기 위해서는 인자로 Collections.reverseOrder()을 넘기면 된다. 기억하자.
+코드가 길어 파트별로 설명해보면,
 
-그리고 forEach를 이용해서 명령어들을 순회한다.
+### 1. 장르 별 총 재생횟수 카운팅
 
-operation을 공백으로 나누면, 문자열과 숫자로 나뉘는데, 문자가 명령, 숫자가 값이나 조건이다.
+genres 배열에는 장르가 담겨있고, 각 장르의 인덱스로 plays 배열 원소의 위치가 해당 곡의 재생 횟수이다.
 
-명령이 I일 때에는 최소힙 최대힙 두 힙에 값을 넣어주고,
+그렇기 때문에 maps에 <장르 이름, 재생횟수 합>으로 카운팅 해주었다.
 
-D일 때를 유심히 보자.
+이는 추후 정렬을 위해서이다.
 
-\-1은 최솟값을 제거하는 것이므로 최소 힙에서 값 하나를 제거해야한다.
+```kotlin
+genres.forEachIndexed {
+            index,gen -> 
+            maps[gen] = maps.getOrDefault(gen, 0) + plays[index]
+        }
+```
 
-그러나 문제 조건에 빈 큐에 대한 명령어는 무시하라고 되어있기 때문에,
+forEachIndexed로 scope를 열면, 첫번째 인자가 인덱스, 두번째 인자가 밸뷰이다.
 
-poll()은 빈 큐에 실행할 경우 Null을 반환하기 때문에 세이프티 호출을 이용해서 빈 큐가 아닐 경우에만 let 로직을 수행한다.
+### 2. Music 데이터 클래스
 
+노래별로 장르, 인덱스, 재생횟수를 담기 위해서 만든 클래스이다.
+
+genres 배열을 이용해서 클래스 배열을 만들 수 있다.
+
+```kotlin
+ data class Music(val id: Int, val play:Int, val gen: String) 
+ 
+ var arr = genres.mapIndexed {
+            index,gen -> Music(index,plays[index]!!,gen)
+        }
+        
+```
+
+forEachIndexed와 마찬가지로, mapIndexed를 하면 인덱스와 밸류 모두를 이용할 수 있다.
+
+### 3. 정렬
+
+복잡해보이지만 별거 없다.
+
+우선 접근때 얘기했던 순서를 다시 복기해보자.
+
+1. 장르의 총 재생횟수가 많은 것들 내림차
+2. 장르가 같을 경우, 노래 별 재생횟수가 많은 것들 내림차
+3. 장르, 재생횟수가 모두 같을 경우 인덱스로 오름차
+
+```kotlin
+val answer = arr.sortedWith(Comparator {
+            m1,m2 -> 
+            if (m1.gen == m2.gen) {
+                if (m1.play == m2.play) {
+                    m1.id - m2.id
+                } else {
+                    m2.play - m1.play
+                }
+            } else {
+                maps[m2.gen]!! - maps[m1.gen]!!
+            }
+        })
+```
+
+sortedWith을 이용하면 반환값으로 정렬된 배열을 새로 받을 수 있고, 인자로 Comparator를 넘기면 커스텀한 정렬 기준을 만들 수 있다.
+
+m1, m2는 각각 Music 클래스이다.
+
+첫번째 if는 장르가 같을 경우, 두번째 if는 노래별 재생횟수가 같을 경우, 마지막으로 인덱스를 기준으로 오름차 정렬한다.
+
+m1,m2에 대해서 첫번째 인자가 앞이면(m1-m2) 오름차, m2-m1은 내림차이다.
+
+### return
+
+```kotlin
+return answer.groupBy {it.gen}.map {
+            it.value.take(2)
+        }.flatten().map { it.id }.toIntArray(
+```
+
+우선 Music클래스들을 장르별로 groupBy로 맵을 만들어준다.
+
+이때 맵 타입은 <장르 명, 뮤직 리스트> 이므로 \<String, List\<Music>이다.
+
+그리고 맵의 value(List\<Music)에 대해서 take(2)를 하면 상위 2개 Music을 뽑아 List로 만든다. 이렇게 하면 List\<List\<Music>>이 되서, 안쪽의 List\<Music>은 2개,2개일 것이다.
+
+그리고 이를 flatten()을 하면 List\<Music>의 단일 리스트로 만들어준다.
+
+그리고 이 음악 4개에 대해 인덱스로 정수 배열을 만든다.
