@@ -137,3 +137,41 @@ return answer.groupBy {it.gen}.map {
 그리고 이를 flatten()을 하면 List\<Music>의 단일 리스트로 만들어준다.
 
 그리고 이 음악 4개에 대해 인덱스로 정수 배열을 만든다.
+
+
+
+## 복습
+
+### 11월 18일
+
+```kotlin
+class Solution {
+    fun solution(genres: Array<String>, plays: IntArray): IntArray {
+        val totalPlayMap = mutableMapOf<String, Int>()
+        
+        genres.forEachIndexed { i, v ->
+            totalPlayMap[v] = totalPlayMap.getOrDefault(v,0) + plays[i]!!
+        }
+        var arr = (0 until plays.size).toMutableList()
+        arr.sortWith {
+            a,b -> 
+            if (totalPlayMap[genres[a]!!]!! == totalPlayMap[genres[b]!!]!!) {
+                if (plays[a]!! == plays[b]!!) {
+                    a - b
+                } else {
+                    plays[b]!! - plays[a]!!
+                }
+            } else {
+                totalPlayMap[genres[b]!!]!! - totalPlayMap[genres[a]!!]!!
+            }
+        }
+        return arr.groupBy { genres[it] }.map {
+            it.value.take(2)
+        }.flatten().toIntArray()
+    }
+}
+```
+
+생각해보니 굳이 Music 클래스로 인덱스와 재생횟수를 들고 있을 필요가 없다고 생각해서 genres.size 만큼의 정수 배열을 이용했다.
+
+그러나 코틀린에서는 맵에 key값을 접근할 때 널 아님 단언을 !!로 선언해주어야해서, 정렬 로직에서 좀 더러운 것 같다.
