@@ -97,6 +97,7 @@
     * [베스트 앨범](algorithms/undefined-2/level-3/undefined.md)
     * [이중 우선 순위 큐](algorithms/undefined-2/level-3/undefined-1.md)
   * [Level 1 모음](algorithms/undefined-2/level-1/README.md)
+    * [성격 유형 검사하기](algorithms/undefined-2/level-1/undefined.md)
     * [x만큼 간격이 있는 n개의 숫자](algorithms/undefined-2/level-1/x-n.md)
     * [나머지가 1이 되는 수 찾기](algorithms/undefined-2/level-1/1.md)
   * [Level 3. 베스트앨범](algorithms/undefined-2/level-3..md)
