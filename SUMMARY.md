@@ -57,6 +57,7 @@
 * [그 외](algorithms/undefined/README.md)
   * [Level 3. 성적 평균](algorithms/undefined/level-3..md)
 * [LeetCode](algorithms/leetcode/README.md)
+  * [743. Network Delay Time](algorithms/leetcode/743.-network-delay-time.md)
   * [Array Partition with Kotlin](algorithms/leetcode/array-partition-with-kotlin.md)
   * [49. Group Anagrams](algorithms/leetcode/49.-group-anagrams.md)
   * [819. Most Common Word](algorithms/leetcode/819.-most-common-word.md)
